@@ -1,5 +1,6 @@
 package com.mathildemouw.simpletodo;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -32,6 +33,7 @@ public class SimpleTodoActivity extends ActionBarActivity {
         itemsAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, items);
         lvItems.setAdapter(itemsAdapter);
         setupListViewListener();
+        setupEditListener();
     }
 
     private void setupListViewListener(){
@@ -44,7 +46,19 @@ public class SimpleTodoActivity extends ActionBarActivity {
                 itemsAdapter.notifyDataSetChanged();
                 writeItems();
                 return true;
-            };
+            }
+        });
+    }
+
+    private void setupEditListener() {
+        lvItems.setOnItemClickListener(
+            new AdapterView.OnItemClickListener() {
+        @Override
+        public void onItemClick(AdapterView<?> adapter,
+                                View item, int pos, long id) {
+            Intent intent = new Intent(SimpleTodoActivity.this, EditActivity.class);
+            startActivity(intent);
+            }
         });
     }
 

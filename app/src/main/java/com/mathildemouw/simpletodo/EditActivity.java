@@ -1,9 +1,12 @@
 package com.mathildemouw.simpletodo;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
 
 
 public class EditActivity extends ActionBarActivity {
@@ -13,6 +16,18 @@ public class EditActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit);
     }
+
+//    private void setupEditListener() {
+//        lvItems.setOnItemClickListener(
+//                new AdapterView.OnItemClickListener() {
+//                    @Override
+//                    public void onItemClick(AdapterView<?> adapter,
+//                                            View item, int pos, long id) {
+//                        Intent intent = new Intent(SimpleTodoActivity.this, EditActivity.class);
+//                        startActivity(intent);
+//                    }
+//                });
+//    }
 
 
     @Override
@@ -35,5 +50,10 @@ public class EditActivity extends ActionBarActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public void onSubmit(View v) {
+        // closes the activity and returns to first screen
+        this.finish();
     }
 }
