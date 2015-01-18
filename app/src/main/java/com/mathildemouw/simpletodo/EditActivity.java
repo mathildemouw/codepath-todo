@@ -7,15 +7,24 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.EditText;
+import android.widget.ListView;
 
 
 public class EditActivity extends ActionBarActivity {
+
+    EditText mletView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit);
+        mletView = (EditText) findViewById(R.id.mletView);
+
+        String item = getIntent().getStringExtra("item");
+        mletView.setText(item);
     }
+
 
 //    private void setupEditListener() {
 //        lvItems.setOnItemClickListener(
