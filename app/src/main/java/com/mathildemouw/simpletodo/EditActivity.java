@@ -7,8 +7,10 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Toast;
 
 
 public class EditActivity extends ActionBarActivity {
@@ -19,25 +21,11 @@ public class EditActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit);
-        mletView = (EditText) findViewById(R.id.mletView);
 
+        mletView = (EditText) findViewById(R.id.mletView);
         String item = getIntent().getStringExtra("item");
         mletView.setText(item);
     }
-
-
-//    private void setupEditListener() {
-//        lvItems.setOnItemClickListener(
-//                new AdapterView.OnItemClickListener() {
-//                    @Override
-//                    public void onItemClick(AdapterView<?> adapter,
-//                                            View item, int pos, long id) {
-//                        Intent intent = new Intent(SimpleTodoActivity.this, EditActivity.class);
-//                        startActivity(intent);
-//                    }
-//                });
-//    }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -60,9 +48,10 @@ public class EditActivity extends ActionBarActivity {
 
         return super.onOptionsItemSelected(item);
     }
-
     public void onSubmit(View v) {
-        // closes the activity and returns to first screen
-        this.finish();
+        Intent item = new Intent();
+        item.putExtra("item", mletView.getText().toString());
+        setResult(RESULT_OK, item); // set result code and bundle data for response
+        finish();
     }
 }

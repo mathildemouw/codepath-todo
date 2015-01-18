@@ -11,6 +11,7 @@
         android:layout_height="wrap_content"
         android:text="@string/edit_label"
         android:id="@+id/btnEdit"
+        android:onClick="onSubmit"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />

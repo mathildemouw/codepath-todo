@@ -10,6 +10,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import org.apache.commons.io.FileUtils;
 
@@ -50,6 +51,7 @@ public class SimpleTodoActivity extends ActionBarActivity {
         });
     }
 
+    private final int REQUEST_CODE = 10;
     private void setupEditListener() {
         lvItems.setOnItemClickListener(
             new AdapterView.OnItemClickListener() {
@@ -58,9 +60,17 @@ public class SimpleTodoActivity extends ActionBarActivity {
                                 View item, int pos, long id) {
             Intent intent = new Intent(SimpleTodoActivity.this, EditActivity.class);
             intent.putExtra("item", items.get(pos));
-            startActivity(intent);
+            startActivityForResult(intent, REQUEST_CODE);
             }
         });
+    }
+
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        // REQUEST_CODE is defined above
+        if (resultCode == RESULT_OK && requestCode == REQUEST_CODE) {
+            String item = data.getStringExtra("item");
+            Toast.makeText(this, item, Toast.LENGTH_SHORT).show();
+        }
     }
 
 
