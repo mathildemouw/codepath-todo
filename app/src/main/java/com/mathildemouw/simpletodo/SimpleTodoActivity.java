@@ -57,7 +57,7 @@ public class SimpleTodoActivity extends ActionBarActivity {
         public void onItemClick(AdapterView<?> adapter,
                                 View item, int pos, long id) {
             Intent intent = new Intent(SimpleTodoActivity.this, EditActivity.class);
-            intent.putExtra("item", "placeholder");
+            intent.putExtra("item", items.get(pos));
             startActivity(intent);
             }
         });
