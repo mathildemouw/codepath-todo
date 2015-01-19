@@ -8,8 +8,8 @@ Completed user stories:
 
  * [x] Required: User can add items to the to-do list
  * [x] Required: User can remove items
- * [] Second Release: User can edit items on the to-do list.
+ * [X] Second Release: User can edit items on the to-do list.
  
 Notes:
 
-Spent some time making the UI work across multiple phone resolutions by playing around with the RelativeLayout.
+Had some frustration figuring out that I needed to pass the position of an item as a string. The ArrayAdapter is still a bit mysterious, but I'm starting to see how it works.
