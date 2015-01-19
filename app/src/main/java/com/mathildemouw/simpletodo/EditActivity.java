@@ -16,6 +16,7 @@ import android.widget.Toast;
 public class EditActivity extends ActionBarActivity {
 
     EditText mletView;
+    String itemPos;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +26,7 @@ public class EditActivity extends ActionBarActivity {
         mletView = (EditText) findViewById(R.id.mletView);
         String item = getIntent().getStringExtra("item");
         mletView.setText(item);
+        itemPos = getIntent().getStringExtra("itemPos");
     }
 
     @Override
@@ -51,6 +53,7 @@ public class EditActivity extends ActionBarActivity {
     public void onSubmit(View v) {
         Intent item = new Intent();
         item.putExtra("item", mletView.getText().toString());
+        item.putExtra("itemPos", itemPos);
         setResult(RESULT_OK, item); // set result code and bundle data for response
         finish();
     }

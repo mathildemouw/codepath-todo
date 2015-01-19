@@ -60,6 +60,7 @@ public class SimpleTodoActivity extends ActionBarActivity {
                                 View item, int pos, long id) {
             Intent intent = new Intent(SimpleTodoActivity.this, EditActivity.class);
             intent.putExtra("item", items.get(pos));
+            intent.putExtra("itemPos", String.valueOf(pos));
             startActivityForResult(intent, REQUEST_CODE);
             }
         });
@@ -69,7 +70,9 @@ public class SimpleTodoActivity extends ActionBarActivity {
         // REQUEST_CODE is defined above
         if (resultCode == RESULT_OK && requestCode == REQUEST_CODE) {
             String item = data.getStringExtra("item");
-            Toast.makeText(this, item, Toast.LENGTH_SHORT).show();
+            int itemPos = Integer.parseInt(data.getStringExtra("itemPos"));
+            items.set(itemPos, item);
+            writeItems();
         }
     }
 
